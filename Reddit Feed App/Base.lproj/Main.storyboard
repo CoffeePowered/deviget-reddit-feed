@@ -26,13 +26,18 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IdP-07-IxE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6YW-CY-mJX"/>
                             <constraint firstItem="IdP-07-IxE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ssj-7J-v2w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="logoHeight" destination="nWX-6U-UlH" id="jpX-NV-8Os"/>
+                        <outlet property="logoVerticalCenter" destination="6YW-CY-mJX" id="3dS-q3-UaL"/>
+                        <outlet property="logoWidth" destination="FUP-gu-ywo" id="Idc-Ig-yX5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
