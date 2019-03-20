@@ -28,6 +28,7 @@
 		A0CC65DE2242A1C70067B832 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC65C7224279060067B832 /* PostsPresenter.swift */; };
 		A0CC65E02242A3690067B832 /* MockPostsNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC65DF2242A3690067B832 /* MockPostsNetworkAPI.swift */; };
 		A0CC65E22242A39D0067B832 /* MockPostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC65E12242A39D0067B832 /* MockPostsRepository.swift */; };
+		A0CC65E42242F0680067B832 /* PostsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC65E32242F0680067B832 /* PostsResponseParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		A0CC65D82242899D0067B832 /* PostsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsPresenterTests.swift; sourceTree = "<group>"; };
 		A0CC65DF2242A3690067B832 /* MockPostsNetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPostsNetworkAPI.swift; sourceTree = "<group>"; };
 		A0CC65E12242A39D0067B832 /* MockPostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPostsRepository.swift; sourceTree = "<group>"; };
+		A0CC65E32242F0680067B832 /* PostsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsResponseParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				A0CC65D4224284E60067B832 /* Network.swift */,
+				A0CC65E32242F0680067B832 /* PostsResponseParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				A0CC65C8224279060067B832 /* PostsPresenter.swift in Sources */,
 				A0CC65C62242710D0067B832 /* PostsViewController.swift in Sources */,
 				A0CC6599224261950067B832 /* ViewController.swift in Sources */,
+				A0CC65E42242F0680067B832 /* PostsResponseParser.swift in Sources */,
 				A0CC65D7224285FE0067B832 /* PostsPersistance.swift in Sources */,
 				A0CC65D3224283CC0067B832 /* PostsRepository.swift in Sources */,
 				A0CC6597224261950067B832 /* AppDelegate.swift in Sources */,

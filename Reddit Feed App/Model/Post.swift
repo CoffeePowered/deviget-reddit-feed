@@ -8,6 +8,12 @@
 
 import Foundation
 
-struct Post {
+struct Post: Codable {
+    //let id: String?
+    let title: String?
+    let thumbnail: String?
+    let created: Int?
+    let author: String?
+    let num_comments: Int?
     
 }

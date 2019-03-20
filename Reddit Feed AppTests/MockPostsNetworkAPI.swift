@@ -11,7 +11,8 @@ import Foundation
 class MockPostsNetworkAPI: PostsNetworking {
     
     var shouldFail = false
-    func fetchPosts(completion: ([Post])->Void, failure: ()->Void) {
+    
+    func fetchPosts(after: String?, limit: Int, completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
         if shouldFail {
             completion([])
             return
