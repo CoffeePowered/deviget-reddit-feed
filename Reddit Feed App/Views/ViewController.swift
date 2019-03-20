@@ -29,7 +29,9 @@ class ViewController: UIViewController {
             strongSelf.logoHeight.constant = 0
             strongSelf.view.layoutIfNeeded()
         }, completion: {hasFinished in
-            
+            if hasFinished {
+                self.performSegue(withIdentifier: "goToPosts", sender: self)
+            }
         })
     }
 

@@ -14,6 +14,7 @@
 		A0CC65A1224261980067B832 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CC659F224261980067B832 /* LaunchScreen.storyboard */; };
 		A0CC65AC224261980067B832 /* Reddit_Feed_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC65AB224261980067B832 /* Reddit_Feed_AppTests.swift */; };
 		A0CC65B7224261980067B832 /* Reddit_Feed_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC65B6224261980067B832 /* Reddit_Feed_AppUITests.swift */; };
+		A0CC65C62242710D0067B832 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC65C52242710D0067B832 /* PostsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A0CC65B2224261980067B832 /* Reddit Feed AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Reddit Feed AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CC65B6224261980067B832 /* Reddit_Feed_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit_Feed_AppUITests.swift; sourceTree = "<group>"; };
 		A0CC65B8224261980067B832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0CC65C52242710D0067B832 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +99,9 @@
 		A0CC6595224261950067B832 /* Reddit Feed App */ = {
 			isa = PBXGroup;
 			children = (
+				A0CC65C4224270CA0067B832 /* Views */,
 				A0CC6596224261950067B832 /* AppDelegate.swift */,
-				A0CC6598224261950067B832 /* ViewController.swift */,
-				A0CC659A224261950067B832 /* Main.storyboard */,
 				A0CC659D224261980067B832 /* Assets.xcassets */,
-				A0CC659F224261980067B832 /* LaunchScreen.storyboard */,
 				A0CC65A2224261980067B832 /* Info.plist */,
 			);
 			path = "Reddit Feed App";
@@ -123,6 +123,17 @@
 				A0CC65B8224261980067B832 /* Info.plist */,
 			);
 			path = "Reddit Feed AppUITests";
+			sourceTree = "<group>";
+		};
+		A0CC65C4224270CA0067B832 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0CC659F224261980067B832 /* LaunchScreen.storyboard */,
+				A0CC659A224261950067B832 /* Main.storyboard */,
+				A0CC6598224261950067B832 /* ViewController.swift */,
+				A0CC65C52242710D0067B832 /* PostsViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0CC65C62242710D0067B832 /* PostsViewController.swift in Sources */,
 				A0CC6599224261950067B832 /* ViewController.swift in Sources */,
 				A0CC6597224261950067B832 /* AppDelegate.swift in Sources */,
 			);
