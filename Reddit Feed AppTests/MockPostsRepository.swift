@@ -7,16 +7,13 @@
 //
 
 import Foundation
+@testable import Reddit_Feed_App
 
 class MockPostsRepository: PostsRepositoryProtocol {
     
-    // Set this flag to cause the requests to fail
-    var shouldFail = false
     
-    // Set the posts to be returned in case of success --that is, if shouldFail is set to false
-    var posts: [Post] = []
-    
-    func fetchInitialPosts(completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
+    /*
+    func fetchMorePosts(completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
         if shouldFail {
             completion(posts)
             return
@@ -24,16 +21,25 @@ class MockPostsRepository: PostsRepositoryProtocol {
         failure()
     }
     
-    func fetchMorePosts(completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
-        
+    func fetchInitialPosts(completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
     }
     
     func post(_ post: Post, markAsRead: Bool) {
-        
     }
     
     func isBusy() -> Bool {
         return false
     }
+*/
 
+    // Set this flag to cause the requests to fail
+    var shouldFail = false
+    
+    // Set the posts to be returned in case of success --that is, if shouldFail is set to false
+    var posts: [Post] = []
+    
+    func fetchInitialPosts(completion: @escaping ([Post])->Void, failure: @escaping ()->Void) {}
+    func fetchMorePosts(completion: @escaping ([Post])->Void, failure: @escaping ()->Void) {}
+    func post(_ post: Post, markAsRead: Bool) {}
+    func isBusy() -> Bool { return false }
 }

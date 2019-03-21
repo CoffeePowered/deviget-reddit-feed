@@ -25,10 +25,10 @@ class PostsPresenterTests: XCTestCase {
         let testPresenter = PostsPresenter(with: mockRepository)
         
         let expectation = self.expectation(description: "presenterFetch")
-        testPresenter.reloadPosts {
+        testPresenter.refreshPosts(view: <#T##PostsViewing#>, completion: {
             XCTAssert(testPresenter.postsCount() == 1, "The postsCount method should return 1")
             expectation.fulfill()
-        }
+        })
         
         waitForExpectations(timeout: 1, handler: nil)
     }
