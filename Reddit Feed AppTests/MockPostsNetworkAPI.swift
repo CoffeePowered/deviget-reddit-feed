@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@testable import Reddit_Feed_App
 
 class MockPostsNetworkAPI: PostsNetworking {
     
