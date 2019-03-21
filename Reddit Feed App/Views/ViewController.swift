@@ -35,6 +35,17 @@ class ViewController: UIViewController {
         })
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPosts",
+            let nav = segue.destination as? UINavigationController,
+            let postsViewController = nav.topViewController as? PostsViewController {
+            let storage = PostsPersistentStorage()
+            let network = PostsNetworkAPI()
+            let repository = PostsRepository(withNetwork: network, andStorage: storage)
+            let presenter = PostsPresenter(with: repository)
+            postsViewController.presenter = presenter
+        }
+    }
 
 }
 
