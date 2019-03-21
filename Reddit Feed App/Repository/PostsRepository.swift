@@ -30,6 +30,10 @@ class PostsRepository {
         networkLayer = network
         persistentStorage = storage
     }
+    
+    func syncFromPersistence(posts: [Post]) -> [Post] {
+        return posts
+    }
 }
 
 extension PostsRepository: PostsRepositoryProtocol {
@@ -38,17 +42,30 @@ extension PostsRepository: PostsRepositoryProtocol {
         before = nil
         after = nil
         guard let network = networkLayer else {
-            completion([])
+            failure()
             return
         }
-        network.fetchPosts(after: nil, limit: limit, completion: { (posts, before, after) in
+        network.fetchPosts(before: nil, after: nil, limit: limit, completion: {[weak self] (posts, before, after) in
             // Do something, i.e. sync content from persistence vs content from the network response
-            
+            guard let strongSelf = self else { return }
+            strongSelf.before = before
+            strongSelf.after  = after
+            completion(strongSelf.syncFromPersistence(posts: posts))
         }, failure: failure)
     }
 
     func fetchMorePosts(completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
-        
+        guard let network = networkLayer else {
+            failure()
+            return
+        }
+        network.fetchPosts(before: nil, after: nil, limit: limit, completion: {[weak self] (posts, before, after) in
+            // Do something, i.e. sync content from persistence vs content from the network response
+            guard let strongSelf = self else { return }
+            strongSelf.before = before
+            strongSelf.after  = after
+            completion(strongSelf.syncFromPersistence(posts: posts))
+            }, failure: failure)
     }
     
     func post(_ post: Post, markAsRead: Bool) {
