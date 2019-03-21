@@ -10,7 +10,7 @@ import Foundation
 
 protocol PostsNetworking {
     // The completion block must return an array of Posts, a "before" identifier, and an "after" identifier
-    func fetchPosts(after: String?, limit: Int, completion: @escaping ([Post], String?, String?)->Void, failure: @escaping ()->Void)
+    func fetchPosts(before: String?, after: String?, limit: Int, completion: @escaping ([Post], String?, String?)->Void, failure: @escaping ()->Void)
     
     // Returns true if there is a network call in progress. False otherwise.
     func isBusy() -> Bool
@@ -22,7 +22,7 @@ class PostsNetworkAPI {
 }
 
 extension PostsNetworkAPI: PostsNetworking {
-    func fetchPosts(after: String?, limit: Int, completion: @escaping ([Post], String?, String?)->Void, failure: @escaping ()->Void) {
+    func fetchPosts(before: String?, after: String?, limit: Int, completion: @escaping ([Post], String?, String?)->Void, failure: @escaping ()->Void) {
         callInProgress = true
         if let baseUrl = URL(string: feedURLString) {
             var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)
