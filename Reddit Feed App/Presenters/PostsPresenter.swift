@@ -11,12 +11,12 @@ import UIKit
 
 // Interface methods for a posts feed presentation logic object
 protocol PostsPresenting {
-    func refreshPosts(completion: ()->Void)
-    func fetchMorePosts(completion: ()->Void)
+    func refreshPosts(view: PostsViewing, completion: @escaping ()->Void)
+    func fetchMorePosts(view: PostsViewing, completion: @escaping ()->Void)
     func postsCount() -> Int
     func showDetail(in view: PostsViewing, forItemAt index: Int, inViewOfSize size: CGSize)
-    func cellViewModel(forIndex index: Int) -> PostCellViewModel
-    func view(_ view: PostsViewing, didTapDismissAt index: Int)
+    func cellViewModel(forIndex index: Int) -> PostCellViewModel?
+    func view(_ view: PostsViewing, didReceiveTapToDismiss index: Int)
 }
 
 // Interface methods for a posts feed view
@@ -37,12 +37,18 @@ class PostsPresenter {
     }
     
     func viewModel(for post: Post) -> PostCellViewModel {
+        let timestamp = Int(Date().timeIntervalSince1970)
+        let timeAgo = TimeAgoStringHelper.timeAgoString(sinceTimestamp: post.created ?? 0, currentTimestamp: timestamp)
+        var comments = ""
+        if let numComments = post.num_comments {
+            comments = String(numComments) + " comments"
+        }
         return PostCellViewModel(author: post.author,
-                                 timeAgo: String(describing: post.created),
+                                 timeAgo: timeAgo,
                                  shouldShowDot: true,
                                  title: post.title,
-                                 comments: String(describing: post.num_comments),
-                                 thumbnailURL: nil)
+                                 comments: comments,
+                                 thumbnailURL: URL(string: post.thumbnail ?? ""))
     }
     
     func shouldUseSplitView(for size: CGSize) -> Bool {
@@ -59,37 +65,45 @@ extension PostsPresenter: PostsPresenting {
         }
     }
     
-    func refreshPosts(completion: () -> Void) {
+    func refreshPosts(view: PostsViewing, completion: @escaping () -> Void) {
         guard let repo = repository else { return }
-        repo.fetchInitialPosts(completion: {[weak self] posts in
+        repo.fetchInitialPosts(completion: { [weak self] posts in
             if let strongSelf = self {
-                strongSelf.posts.append(contentsOf: posts)
+                strongSelf.posts = posts
+                view.update()
+                completion()
             }
         }, failure: {
-            
+            view.show(message: "Something went wrong", withTitle: "Oops!")
         })
     }
     
-    func fetchMorePosts(completion: () -> Void) {
+    func fetchMorePosts(view: PostsViewing, completion: @escaping () -> Void) {
         guard let repo = repository else { return }
-        repo.fetchMorePosts(completion: {posts in }, failure: {})
+        repo.fetchMorePosts(completion: { [weak self] posts in
+            if let strongSelf = self {
+                strongSelf.posts.append(contentsOf: posts)
+                view.update()
+                completion()
+            }
+        }, failure: {
+            view.show(message: "Something went wrong", withTitle: "Oops!")
+        })
     }
     
     func postsCount() -> Int {
-        return 0
+        return posts.count
     }
     
-    func cellViewModel(forIndex index: Int) -> PostCellViewModel {
-        return PostCellViewModel(author: "",
-                                 timeAgo: "",
-                                 shouldShowDot: true,
-                                 title: "",
-                                 comments: "",
-                                 thumbnailURL: nil)
+    func cellViewModel(forIndex index: Int) -> PostCellViewModel? {
+        if index >= 0 && index < posts.count {
+            return viewModel(for: posts[index])
+        }
+        return nil
     }
     
-    func view(_ view: PostsViewing, didTapDismissAt index: Int) {
-        
+    func view(_ view: PostsViewing, didReceiveTapToDismiss index: Int) {
+        view.dismissCellAtIndex(index)
     }
 }
 
