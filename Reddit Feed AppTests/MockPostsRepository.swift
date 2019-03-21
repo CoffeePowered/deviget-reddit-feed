@@ -9,17 +9,31 @@
 import Foundation
 
 class MockPostsRepository: PostsRepositoryProtocol {
+    
     // Set this flag to cause the requests to fail
     var shouldFail = false
     
     // Set the posts to be returned in case of success --that is, if shouldFail is set to false
     var posts: [Post] = []
     
-    func fetchPosts(completion: ([Post])->Void, failure: ()->Void) {
+    func fetchInitialPosts(completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
         if shouldFail {
             completion(posts)
             return
         }
         failure()
     }
+    
+    func fetchMorePosts(completion: @escaping ([Post]) -> Void, failure: @escaping () -> Void) {
+        
+    }
+    
+    func post(_ post: Post, markAsRead: Bool) {
+        
+    }
+    
+    func isBusy() -> Bool {
+        return false
+    }
+
 }

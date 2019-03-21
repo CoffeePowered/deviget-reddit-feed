@@ -9,11 +9,19 @@
 import Foundation
 
 struct Post: Codable {
-    //let id: String?
+    let name: String?
     let title: String?
     let thumbnail: String?
     let created: Int?
     let author: String?
     let num_comments: Int?
     
+    init() {
+        name = ""
+        title = ""
+        thumbnail = ""
+        created = 0
+        author = ""
+        num_comments = 0
+    }
 }

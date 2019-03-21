@@ -9,12 +9,20 @@
 import Foundation
 
 protocol PostsPersistable {
-    
+    func post(_ post: Post, markAsRead: Bool)
+    func postIsRead() -> Bool
 }
 
 class PostsPersistentStorage {
 }
 
 extension PostsPersistentStorage: PostsPersistable {
+
+    func post(_ post: Post, markAsRead: Bool) {
+        
+    }
     
+    func postIsRead() -> Bool {
+        return false
+    }
 }

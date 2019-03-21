@@ -8,20 +8,6 @@
 
 import Foundation
 
-struct MainPostsResponse : Codable {
-    let data: DataPostsResponse
-}
-
-struct DataPostsResponse: Codable {
-    let children: [PostChildNode]
-    let after: String?
-    let before: String?
-}
-
-struct PostChildNode: Codable {
-    var data: Post
-}
-
 class PostsResponseParser {
     
     // Returns posts == nil if there was an error
@@ -37,3 +23,18 @@ class PostsResponseParser {
         }
     }
 }
+
+struct MainPostsResponse : Codable {
+    let data: DataPostsResponse
+}
+
+struct DataPostsResponse: Codable {
+    let children: [PostChildNode]
+    let after: String?
+    let before: String?
+}
+
+struct PostChildNode: Codable {
+    var data: Post
+}
+
