@@ -38,7 +38,12 @@ class PostsTableViewCell: UITableViewCell {
     }
     
     func configure(with viewModel: PostCellViewModel) {
-        
+        authorLabel.text = viewModel.author
+        timeAgoLabel.text = viewModel.timeAgo
+        titleLabel.text = viewModel.title
+        readMarkDotLabel.isHidden = !viewModel.shouldShowDot
+        commentsLabel.text = viewModel.comments
+        thumbnailImageView.load(url: viewModel.thumbnailURL)
     }
 
     @IBAction func didTapMainArea(_ sender: Any) {

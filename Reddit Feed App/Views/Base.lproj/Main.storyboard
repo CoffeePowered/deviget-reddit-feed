@@ -174,10 +174,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qf7-Aj-ICU">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="Grc-6E-9rC"/>
+                                    <constraint firstAttribute="height" constant="37" id="dzQ-Iy-GS8"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Qf7-Aj-ICU" firstAttribute="centerY" secondItem="mWx-KZ-YTO" secondAttribute="centerY" id="0Xe-Vk-xoF"/>
                             <constraint firstItem="D6r-vH-TGh" firstAttribute="bottom" secondItem="PFO-Sq-UFW" secondAttribute="bottom" id="8uE-rd-wV0"/>
+                            <constraint firstItem="Qf7-Aj-ICU" firstAttribute="centerX" secondItem="mWx-KZ-YTO" secondAttribute="centerX" id="9J2-vC-vuo"/>
                             <constraint firstItem="PFO-Sq-UFW" firstAttribute="top" secondItem="D6r-vH-TGh" secondAttribute="top" id="Pcs-q2-jAX"/>
                             <constraint firstItem="D6r-vH-TGh" firstAttribute="trailing" secondItem="PFO-Sq-UFW" secondAttribute="trailing" id="gbA-WM-gtR"/>
                             <constraint firstItem="PFO-Sq-UFW" firstAttribute="leading" secondItem="D6r-vH-TGh" secondAttribute="leading" id="hcL-Hl-0lq"/>
@@ -186,6 +195,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Reddit Posts" id="qnb-oj-BHB"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Qf7-Aj-ICU" id="bnJ-BY-EtT"/>
                         <outlet property="tableView" destination="PFO-Sq-UFW" id="Gtm-QH-zsb"/>
                     </connections>
                 </viewController>
